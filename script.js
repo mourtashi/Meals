@@ -1,5 +1,5 @@
 // Variables to hold user data
-let age, exercisePerWeek, currentWeight, targetWeight, targetWeightUnit, numMonths, dietPreference;
+let age, exercisePerWeek, currentWeight, targetWeight, targetWeightUnit, numMonths, dietPreference, weightBarChart;
 
 function validateInput(input) {
   return input !== null && input !== undefined && input !== "";
@@ -33,15 +33,35 @@ function goToStep4() {
   currentWeight = document.getElementById('current-weight').value;
   currentWeightUnit = document.getElementById('current-weight-unit').value;// Capture the weight unit
   
-    if (!validateInput(currentWeight)) {
-      alert("Please enter your current weight.");
-      return;
-    }
+  if (!validateInput(currentWeight)) {
+    alert("Please enter your current weight.");
+    return;
+  }
   
   document.getElementById('step3').style.display = 'none';
   document.getElementById('step4').style.display = 'block';
 }
 
+function createWeightBarChart() {
+  const label = `Weight (${targetWeightUnit})`;
+  const weightCtx = document.getElementById('weightBarChart').getContext('2d');
+
+  if (weightBarChart) {  // Destroy the previous chart if it exists
+    weightBarChart.destroy();
+  }
+
+  weightBarChart = new Chart(weightCtx, {
+    type: 'bar',
+    data: {
+      labels: ['Current Weight', 'Target Weight'],
+      datasets: [{
+        label: label,
+        data: [currentWeight, targetWeight],
+        backgroundColor: ['rgba(75, 192, 192, 0.5)', 'rgba(255, 99, 132, 0.5)'],
+      }],
+    },
+  });
+}
 
 function goToStep5() {
   targetWeight = document.getElementById('target-weight').value;
@@ -54,6 +74,8 @@ function goToStep5() {
   
   document.getElementById('step4').style.display = 'none';
   document.getElementById('step5').style.display = 'block';
+  
+  createWeightBarChart();  // Call this function here
 }
 
 function goToStep6() {
@@ -76,7 +98,6 @@ function showMealPlan() {
     return;
   }
 
-  // Here, you would send the data to AWS and OpenAI's API
   // Simulating the API call with a mock meal plan for now
   const mockMealPlan = `
     - Breakfast: Toast and eggs
@@ -85,35 +106,4 @@ function showMealPlan() {
     - Snack: Apple slices`;
 
   document.getElementById('meal-plan').innerHTML = mockMealPlan;
-
-
-// The actual implementation for sending the data to AWS and OpenAI's API would depend on the libraries and SDKs you're using
-
-const label = `Weight (${targetWeightUnit})`;
-
-  // Create the exercise pie chart
-  const exerciseCtx = document.getElementById('exercisePieChart').getContext('2d');
-  const exercisePieChart = new Chart(exerciseCtx, {
-    type: 'pie',
-    data: {
-      labels: ['Exercise Days', 'Rest Days'],
-      datasets: [{
-        data: [parseInt(exercisePerWeek.charAt(0)), 7 - parseInt(exercisePerWeek.charAt(0))],
-        backgroundColor: ['rgba(75, 192, 192, 0.5)', 'rgba(255, 99, 132, 0.5)'],
-      }],
-    },
-  });
-
-  // Create the weight bar chart
-  const weightCtx = document.getElementById('weightBarChart').getContext('2d');
-  const weightBarChart = new Chart(weightCtx, {
-    type: 'bar',
-    data: {
-      labels: ['Current Weight', 'Target Weight'],
-      datasets: [{
-        data: [currentWeight, targetWeight],
-        backgroundColor: ['rgba(75, 192, 192, 0.5)', 'rgba(255, 99, 132, 0.5)'],
-      }],
-    },
-  });
 }
