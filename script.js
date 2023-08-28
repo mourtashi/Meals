@@ -27,11 +27,13 @@ function goToStep3() {
 
   document.getElementById('step2').style.display = 'none';
   document.getElementById('step3').style.display = 'block';
+
+  createExercisePieChart();  // Call this function here
 }
 
 function goToStep4() {
   currentWeight = document.getElementById('current-weight').value;
-  currentWeightUnit = document.getElementById('current-weight-unit').value;// Capture the weight unit
+  currentWeightUnit = document.getElementById('current-weight-unit').value; // Capture the weight unit
   
   if (!validateInput(currentWeight)) {
     alert("Please enter your current weight.");
@@ -108,14 +110,16 @@ function showMealPlan() {
   document.getElementById('meal-plan').innerHTML = mockMealPlan;
 }
 
-const exerciseCtx = document.getElementById('exercisePieChart').getContext('2d');
-const exercisePieChart = new Chart(exerciseCtx, {
-  type: 'pie',
-  data: {
-    labels: ['Exercise Days', 'Rest Days'],
-    datasets: [{
-      data: [parseInt(exercisePerWeek.charAt(0)), 7 - parseInt(exercisePerWeek.charAt(0))],
-      backgroundColor: ['rgba(75, 192, 192, 0.5)', 'rgba(255, 99, 132, 0.5)'],
-    }],
-  },
-});
+function createExercisePieChart() {
+  const exerciseCtx = document.getElementById('exercisePieChart').getContext('2d');
+  const exercisePieChart = new Chart(exerciseCtx, {
+    type: 'pie',
+    data: {
+      labels: ['Exercise Days', 'Rest Days'],
+      datasets: [{
+        data: [parseInt(exercisePerWeek.charAt(0)), 7 - parseInt(exercisePerWeek.charAt(0))],
+        backgroundColor: ['rgba(75, 192, 192, 0.5)', 'rgba(255, 99, 132, 0.5)'],
+      }],
+    },
+  });
+}
