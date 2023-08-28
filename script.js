@@ -74,7 +74,7 @@ function showMealPlan() {
   if (!validateInput(dietPreference)) {
     alert("Please choose a diet plan.");
     return;
-
+  }
 
   // Here, you would send the data to AWS and OpenAI's API
   // Simulating the API call with a mock meal plan for now
@@ -85,11 +85,12 @@ function showMealPlan() {
     - Snack: Apple slices`;
 
   document.getElementById('meal-plan').innerHTML = mockMealPlan;
-}
+
 
 // The actual implementation for sending the data to AWS and OpenAI's API would depend on the libraries and SDKs you're using
 
 const label = `Weight (${targetWeightUnit})`;
+
   // Create the exercise pie chart
   const exerciseCtx = document.getElementById('exercisePieChart').getContext('2d');
   const exercisePieChart = new Chart(exerciseCtx, {
