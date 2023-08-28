@@ -1,5 +1,5 @@
 // Variables to hold user data
-let age, exercisePerWeek, currentWeight, targetWeight, numMonths, dietPreference;
+let age, exercisePerWeek, currentWeight, targetWeight, targetWeightUnit, numMonths, dietPreference;
 
 function validateInput(input) {
   return input !== null && input !== undefined && input !== "";
@@ -39,12 +39,7 @@ function goToStep4() {
 
 function goToStep5() {
   targetWeight = document.getElementById('target-weight').value;
-
-  if (!validateInput(targetWeight)) {
-    alert("Please enter your target weight.");
-    return;
-  }
-
+  targetWeightUnit = document.getElementById('target-weight-unit').value;  // Capture the weight unit
   document.getElementById('step4').style.display = 'none';
   document.getElementById('step5').style.display = 'block';
 }
@@ -82,6 +77,7 @@ function showMealPlan() {
 
 // The actual implementation for sending the data to AWS and OpenAI's API would depend on the libraries and SDKs you're using
 
+const label = `Weight (${targetWeightUnit})`;
   // Create the exercise pie chart
   const exerciseCtx = document.getElementById('exercisePieChart').getContext('2d');
   const exercisePieChart = new Chart(exerciseCtx, {
