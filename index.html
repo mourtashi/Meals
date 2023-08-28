@@ -32,8 +32,13 @@
   <div id="step3" class="form-container" style="display: none;">
     <label for="current-weight">Enter your current weight:</label>
     <input type="number" id="current-weight" min="0">
+    <select id="current-weight-unit">
+      <option value="lbs">LBS</option>
+      <option value="kg">KG</option>
+    </select>
     <button onclick="goToStep4()">Next</button>
   </div>
+  
 
   <div id="step4" class="form-container" style="display: none;">
     <label for="target-weight">Enter your target weight:</label>

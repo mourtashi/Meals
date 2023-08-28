@@ -31,15 +31,11 @@ function goToStep3() {
 
 function goToStep4() {
   currentWeight = document.getElementById('current-weight').value;
-
-  if (!validateInput(currentWeight)) {
-    alert("Please enter your current weight.");
-    return;
-  }
-
+  currentWeightUnit = document.getElementById('current-weight-unit').value;  // Capture the weight unit
   document.getElementById('step3').style.display = 'none';
   document.getElementById('step4').style.display = 'block';
 }
+
 
 function goToStep5() {
   targetWeight = document.getElementById('target-weight').value;
