@@ -63,3 +63,18 @@ button:hover {
   max-width: 600px;
   margin: 20px auto;
 }
+
+.chart-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.individual-chart {
+  flex: 1;
+  max-width: 50%;
+  margin: 10px;
+  padding: 10px;
+}
+
