@@ -31,7 +31,13 @@ function goToStep3() {
 
 function goToStep4() {
   currentWeight = document.getElementById('current-weight').value;
-  currentWeightUnit = document.getElementById('current-weight-unit').value;  // Capture the weight unit
+  currentWeightUnit = document.getElementById('current-weight-unit').value;// Capture the weight unit
+  
+    if (!validateInput(currentWeight)) {
+      alert("Please enter your current weight.");
+      return;
+    }
+  
   document.getElementById('step3').style.display = 'none';
   document.getElementById('step4').style.display = 'block';
 }
@@ -40,6 +46,12 @@ function goToStep4() {
 function goToStep5() {
   targetWeight = document.getElementById('target-weight').value;
   targetWeightUnit = document.getElementById('target-weight-unit').value;  // Capture the weight unit
+  
+  if (!validateInput(targetWeight)) {
+    alert("Please enter your target weight.");
+    return;
+  }
+  
   document.getElementById('step4').style.display = 'none';
   document.getElementById('step5').style.display = 'block';
 }
