@@ -1,54 +1,48 @@
-// Function to go to Step 2
+// Variables to hold user data
+let age, exercisePerWeek, currentWeight, targetWeight, numMonths, dietPreference;
+
 function goToStep2() {
-    // You may add validations or save the data before moving to the next step
-    document.getElementById('step1').style.display = 'none';
-    document.getElementById('step2').style.display = 'block';
-  }
-  
-  // Function to go to Step 3
-  function goToStep3() {
-    // You may add validations or save the data before moving to the next step
-    document.getElementById('step2').style.display = 'none';
-    document.getElementById('step3').style.display = 'block';
-  }
-  
-  // Function to show meal plan
-  function showMealPlan() {
-    const mealPlanDiv = document.getElementById('meal-plan');
-    const diet = document.getElementById('diet').value;
-  
-    let mealPlan = [];
-  
-    switch (diet) {
-      case 'highProtein':
-        mealPlan = ["Breakfast: Scrambled eggs", "Lunch: Chicken salad", "Dinner: Grilled steak"];
-        break;
-      case 'keto':
-        mealPlan = ["Breakfast: Keto pancakes", "Lunch: Caesar salad", "Dinner: Grilled salmon"];
-        break;
-      case 'lowCalorie':
-        mealPlan = ["Breakfast: Fruit salad", "Lunch: Vegetable soup", "Dinner: Grilled chicken"];
-        break;
-      case 'vegetarian':
-        mealPlan = ["Breakfast: Oatmeal", "Lunch: Veggie burger", "Dinner: Stir-fried tofu"];
-        break;
-      case 'vegan':
-        mealPlan = ["Breakfast: Vegan smoothie", "Lunch: Lentil soup", "Dinner: Chickpea curry"];
-        break;
-      case 'glutenFree':
-        mealPlan = ["Breakfast: Gluten-free muffin", "Lunch: Quinoa salad", "Dinner: Grilled fish"];
-        break;
-      case 'paleo':
-        mealPlan = ["Breakfast: Eggs and avocado", "Lunch: Grilled chicken", "Dinner: Steak and vegetables"];
-        break;
-      case 'mediterranean':
-        mealPlan = ["Breakfast: Greek yogurt", "Lunch: Falafel wrap", "Dinner: Seafood paella"];
-        break;
-      default:
-        mealPlan = ["No meal plan available"];
-    }
-  
-    const listHTML = mealPlan.map(meal => `<li>${meal}</li>`).join("");
-    mealPlanDiv.innerHTML = `<ul>${listHTML}</ul>`;
-  }
-  
+  age = document.getElementById('age').value;
+  document.getElementById('step1').style.display = 'none';
+  document.getElementById('step2').style.display = 'block';
+}
+
+function goToStep3() {
+  exercisePerWeek = document.getElementById('exercisePerWeek').value;
+  document.getElementById('step2').style.display = 'none';
+  document.getElementById('step3').style.display = 'block';
+}
+
+function goToStep4() {
+  currentWeight = document.getElementById('current-weight').value;
+  document.getElementById('step3').style.display = 'none';
+  document.getElementById('step4').style.display = 'block';
+}
+
+function goToStep5() {
+  targetWeight = document.getElementById('target-weight').value;
+  document.getElementById('step4').style.display = 'none';
+  document.getElementById('step5').style.display = 'block';
+}
+
+function goToStep6() {
+  numMonths = document.getElementById('numMonths').value;
+  document.getElementById('step5').style.display = 'none';
+  document.getElementById('step6').style.display = 'block';
+}
+
+function showMealPlan() {
+  dietPreference = document.getElementById('diet').value;
+
+  // Here, you would send the data to AWS and OpenAI's API
+  // Simulating the API call with a mock meal plan for now
+  const mockMealPlan = `
+    - Breakfast: Toast and eggs
+    - Lunch: Grilled chicken and rice
+    - Dinner: Steak and potatoes
+    - Snack: Apple slices`;
+
+  document.getElementById('meal-plan').innerHTML = mockMealPlan;
+}
+
+// The actual implementation for sending the data to AWS and OpenAI's API would depend on the libraries and SDKs you're using

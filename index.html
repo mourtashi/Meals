@@ -8,18 +8,36 @@
   <h1>Personalized Fitness Plans</h1>
 
   <div id="step1" class="form-container">
-    <label for="current-weight">Enter your current weight:</label>
-    <input type="number" id="current-weight" min="0">
+    <label for="age">Enter your age:</label>
+    <input type="number" id="age" min="0">
     <button onclick="goToStep2()">Next</button>
   </div>
 
   <div id="step2" class="form-container" style="display: none;">
-    <label for="target-weight">Enter your target weight:</label>
-    <input type="number" id="target-weight" min="0">
+    <label for="exercisePerWeek">Enter amount of exercise per week:</label>
+    <input type="text" id="exercisePerWeek" placeholder="e.g. 3 days a week">
     <button onclick="goToStep3()">Next</button>
   </div>
 
   <div id="step3" class="form-container" style="display: none;">
+    <label for="current-weight">Enter your current weight:</label>
+    <input type="number" id="current-weight" min="0">
+    <button onclick="goToStep4()">Next</button>
+  </div>
+
+  <div id="step4" class="form-container" style="display: none;">
+    <label for="target-weight">Enter your target weight:</label>
+    <input type="number" id="target-weight" min="0">
+    <button onclick="goToStep5()">Next</button>
+  </div>
+
+  <div id="step5" class="form-container" style="display: none;">
+    <label for="numMonths">Enter the number of months to achieve your goal:</label>
+    <input type="number" id="numMonths" min="0">
+    <button onclick="goToStep6()">Next</button>
+  </div>
+
+  <div id="step6" class="form-container" style="display: none;">
     <label for="diet">Choose your diet plan:</label>
     <select id="diet">
       <option value="highProtein">High Protein</option>
