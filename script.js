@@ -71,7 +71,7 @@ function showMealPlan() {
   if (!validateInput(dietPreference)) {
     alert("Please choose a diet plan.");
     return;
-  }
+
 
   // Here, you would send the data to AWS and OpenAI's API
   // Simulating the API call with a mock meal plan for now
@@ -85,3 +85,30 @@ function showMealPlan() {
 }
 
 // The actual implementation for sending the data to AWS and OpenAI's API would depend on the libraries and SDKs you're using
+
+  // Create the exercise pie chart
+  const exerciseCtx = document.getElementById('exercisePieChart').getContext('2d');
+  const exercisePieChart = new Chart(exerciseCtx, {
+    type: 'pie',
+    data: {
+      labels: ['Exercise Days', 'Rest Days'],
+      datasets: [{
+        data: [parseInt(exercisePerWeek.charAt(0)), 7 - parseInt(exercisePerWeek.charAt(0))],
+        backgroundColor: ['rgba(75, 192, 192, 0.5)', 'rgba(255, 99, 132, 0.5)'],
+      }],
+    },
+  });
+
+  // Create the weight bar chart
+  const weightCtx = document.getElementById('weightBarChart').getContext('2d');
+  const weightBarChart = new Chart(weightCtx, {
+    type: 'bar',
+    data: {
+      labels: ['Current Weight', 'Target Weight'],
+      datasets: [{
+        data: [currentWeight, targetWeight],
+        backgroundColor: ['rgba(75, 192, 192, 0.5)', 'rgba(255, 99, 132, 0.5)'],
+      }],
+    },
+  });
+}
