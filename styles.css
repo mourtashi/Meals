@@ -96,22 +96,13 @@ button:hover {
   margin: 20px auto;
 }
 
-.chart-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: nowrap;
-}
-
-.individual-chart {
-  flex: 1;
-  max-width: 50%;
-  margin: 10px;
-  padding: 10px;
-}
-
-.chart-container {
-  max-width: 100%;
-  height: auto;
+#meal-plan-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  text-align: center;
 }
 

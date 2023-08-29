@@ -85,4 +85,5 @@ function showMealPlan() {
     - Snack: Apple slices`;
 
   document.getElementById('meal-plan').innerHTML = mockMealPlan;
+  document.getElementById('meal-plan-container').style.display = 'block';
 }
