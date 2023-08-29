@@ -55,19 +55,34 @@ h1 {
 }
 
 .form-container {
-  text-align: center;
-  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
 }
 
-label {
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.form-row label {
+  flex: 1;
+  text-align: right;
   margin-right: 10px;
 }
 
-input[type="number"],
-select {
-  margin: 5px;
-  padding: 10px;
-  font-size: 1em;
+.form-row input[type="number"],
+.form-row select {
+  flex: 2;
+}
+
+.unit-selector {
+  flex: 1;
+  margin-left: 5px;
 }
 
 button {
@@ -83,43 +98,4 @@ button {
 
 button:hover {
   background-color: #45a049;
-}
-
-#meal-plan {
-  text-align: center;
-  margin-top: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-width: 600px;
-  margin: 20px auto;
-}
-
-#meal-plan-container {
-  max-width: 800px;
-  margin: 20px auto;
-  padding: 20px;
-  background-color: #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  text-align: center;
-}
-
-.form-container label {
-  display: inline-block;
-  width: 50%;
-  text-align: right;
-  margin-right: 10px;
-}
-
-.form-container input[type="number"],
-.form-container select {
-  display: inline-block;
-  width: 40%;
-}
-
-.unit-selector {
-  display: inline-block;
-  width: 10%;
 }
