@@ -1,5 +1,5 @@
 // Variables to hold user data
-let age, exercisePerWeek, currentWeight, targetWeight, targetWeightUnit, numMonths, dietPreference, weightBarChart;
+let age, exercisePerWeek, currentWeight, targetWeight, targetWeightUnit, numMonths, dietPreference;
 
 function validateInput(input) {
   return input !== null && input !== undefined && input !== "";
@@ -44,27 +44,6 @@ function goToStep4() {
   document.getElementById('step4').style.display = 'block';
 }
 
-function createWeightBarChart() {
-  const label = `Weight (${targetWeightUnit})`;
-  const weightCtx = document.getElementById('weightBarChart').getContext('2d');
-
-  if (weightBarChart) {  // Destroy the previous chart if it exists
-    weightBarChart.destroy();
-  }
-
-  weightBarChart = new Chart(weightCtx, {
-    type: 'bar',
-    data: {
-      labels: ['Current Weight', 'Target Weight'],
-      datasets: [{
-        label: label,
-        data: [currentWeight, targetWeight],
-        backgroundColor: ['rgba(75, 192, 192, 0.5)', 'rgba(255, 99, 132, 0.5)'],
-      }],
-    },
-  });
-}
-
 function goToStep5() {
   targetWeight = document.getElementById('target-weight').value;
   targetWeightUnit = document.getElementById('target-weight-unit').value;  // Capture the weight unit
@@ -76,8 +55,7 @@ function goToStep5() {
   
   document.getElementById('step4').style.display = 'none';
   document.getElementById('step5').style.display = 'block';
-  
-  createWeightBarChart();  // Call this function here
+
 }
 
 function goToStep6() {
@@ -108,18 +86,4 @@ function showMealPlan() {
     - Snack: Apple slices`;
 
   document.getElementById('meal-plan').innerHTML = mockMealPlan;
-}
-
-function createExercisePieChart() {
-  const exerciseCtx = document.getElementById('exercisePieChart').getContext('2d');
-  const exercisePieChart = new Chart(exerciseCtx, {
-    type: 'pie',
-    data: {
-      labels: ['Exercise Days', 'Rest Days'],
-      datasets: [{
-        data: [parseInt(exercisePerWeek.charAt(0)), 7 - parseInt(exercisePerWeek.charAt(0))],
-        backgroundColor: ['rgba(75, 192, 192, 0.5)', 'rgba(255, 99, 132, 0.5)'],
-      }],
-    },
-  });
 }
