@@ -18,82 +18,63 @@
 
   <h1>Personalized Meal Plans</h1>
 
-  <!-- Main form container -->
   <div class="container">
-    <!-- Steps container -->
-    <div class="steps-container">
-      <!-- Step 1 -->
-      <div id="step1" class="form-container">
-        <label for="age">Enter your age:</label>
-        <input type="number" id="age" min="0">
-        <button onclick="goToStep2()">Next</button>
-      </div>
-      <!-- Step 2 -->
-      <div id="step2" class="form-container" style="display: none;">
-        <label for="exercisePerWeek">Enter amount of exercise per week:</label>
-        <select id="exercisePerWeek">
-          <option value="1 day a week">1 day a week</option>
-          <option value="2 days a week">2 days a week</option>
-          <option value="3 days a week">3 days a week</option>
-          <option value="4 days a week">4 days a week</option>
-          <option value="5 days a week">5 days a week</option>
-          <option value="6 days a week">6 days a week</option>
-          <option value="7 days a week">7 days a week</option>
-        </select>
+    <form id="meal-plan-form">
+      <label for="age">Enter your age:</label>
+      <input type="number" id="age" min="0"><br>
 
-        <button onclick="goToStep3()">Next</button>
-      </div>
-      <!-- Step 3 -->
-      <div id="step3" class="form-container" style="display: none;">
-        <label for="current-weight">Enter your current weight:</label>
-        <input type="number" id="current-weight" min="0">
-        <select id="current-weight-unit">
-          <option value="lbs">LBS</option>
-          <option value="kg">KG</option>
-        </select>
+      <label for="exercisePerWeek">Enter amount of exercise per week:</label>
+      <select id="exercisePerWeek">
+        <option value="1 day a week">1 day a week</option>
+        <option value="2 days a week">2 days a week</option>
+        <option value="3 days a week">3 days a week</option>
+        <option value="4 days a week">4 days a week</option>
+        <option value="5 days a week">5 days a week</option>
+        <option value="6 days a week">6 days a week</option>
+        <option value="7 days a week">7 days a week</option>
+      </select><br>
 
-        <button onclick="goToStep4()">Next</button>
-      </div>
-      <!-- Step 4 -->
-      <div id="step4" class="form-container" style="display: none;">
-        <label for="target-weight">Enter your target weight:</label>
-        <input type="number" id="target-weight" min="0">
-         <select id="target-weight-unit">
-            <option value="lbs">LBS</option>
-            <option value="kg">KG</option>
-         </select>
-        <button onclick="goToStep5()">Next</button>
-      </div>
-      <!-- Step 5 -->
-      <div id="step5" class="form-container" style="display: none;">
-        <label for="numMonths">Enter the number of months to achieve your goal:</label>
-        <input type="number" id="numMonths" min="0">
-        <button onclick="goToStep6()">Next</button>
-      </div>
-      <!-- Step 6 -->
-      <div id="step6" class="form-container" style="display: none;">
-        <label for="diet">Choose your diet plan:</label>
-        <select id="diet">
-          <option value="highProtein">High Protein</option>
-          <option value="keto">Keto</option>
-          <option value="lowCalorie">Low Calorie</option>
-          <option value="vegetarian">Vegetarian</option>
-          <option value="vegan">Vegan</option>
-          <option value="glutenFree">Gluten-Free</option>
-          <option value="paleo">Paleo</option>
-          <option value="mediterranean">Mediterranean</option>
-        </select>
-        <button onclick="showMealPlan()">Generate</button>
-      </div>
-    </div>
+      <label for="current-weight">Enter your current weight:</label>
+      <input type="number" id="current-weight" min="0">
+      <select id="current-weight-unit">
+        <option value="lbs">LBS</option>
+        <option value="kg">KG</option>
+     </select>
+
+        <br>
+
+      <label for="target-weight">Enter your target weight:</label>
+      <input type="number" id="target-weight" min="0">
+      <select id="target-weight-unit">
+        <option value="lbs">LBS</option>
+        <option value="kg">KG</option>
+     </select>
+        
+        <br>
+
+      <label for="numMonths">Enter the number of months to achieve your goal:</label>
+      <input type="number" id="numMonths" min="0"><br>
+
+      <label for="diet">Choose your diet plan:</label>
+      <select id="diet">
+        <option value="highProtein">High Protein</option>
+        <option value="keto">Keto</option>
+        <option value="lowCalorie">Low Calorie</option>
+        <option value="vegetarian">Vegetarian</option>
+        <option value="vegan">Vegan</option>
+        <option value="glutenFree">Gluten-Free</option>
+        <option value="paleo">Paleo</option>
+        <option value="mediterranean">Mediterranean</option>
+      </select>br>
+
+      <button type="button" onclick="showMealPlan()">Generate</button>
+    </form>
   </div>
 
-  <!-- Meal Plan Container -->
   <div id="meal-plan-container" style="display: none;">
     <div id="meal-plan"></div>
   </div>
 
 <script src="script.js"></script>
-
 </body>
 </html>

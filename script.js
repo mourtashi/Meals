@@ -1,79 +1,24 @@
 // Variables to hold user data
-let age, exercisePerWeek, currentWeight, targetWeight, targetWeightUnit, numMonths, dietPreference;
+let age, exercisePerWeek, currentWeight, targetWeight, currentWeightUnit, targetWeightUnit, numMonths, dietPreference;
 
 function validateInput(input) {
   return input !== null && input !== undefined && input !== "";
 }
 
-function goToStep2() {
-  age = document.getElementById('age').value;
-
-  if (!validateInput(age)) {
-    alert("Please enter your age.");
-    return;
-  }
-
-  document.getElementById('step1').style.display = 'none';
-  document.getElementById('step2').style.display = 'block';
-}
-
-function goToStep3() {
-  exercisePerWeek = document.getElementById('exercisePerWeek').value;
-
-  if (!validateInput(exercisePerWeek)) {
-    alert("Please select the amount of exercise per week.");
-    return;
-  }
-
-  document.getElementById('step2').style.display = 'none';
-  document.getElementById('step3').style.display = 'block';
-
-}
-
-function goToStep4() {
-  currentWeight = document.getElementById('current-weight').value;
-  currentWeightUnit = document.getElementById('current-weight-unit').value; // Capture the weight unit
-  
-  if (!validateInput(currentWeight)) {
-    alert("Please enter your current weight.");
-    return;
-  }
-  
-  document.getElementById('step3').style.display = 'none';
-  document.getElementById('step4').style.display = 'block';
-}
-
-function goToStep5() {
-  targetWeight = document.getElementById('target-weight').value;
-  targetWeightUnit = document.getElementById('target-weight-unit').value;  // Capture the weight unit
-  
-  if (!validateInput(targetWeight)) {
-    alert("Please enter your target weight.");
-    return;
-  }
-  
-  document.getElementById('step4').style.display = 'none';
-  document.getElementById('step5').style.display = 'block';
-
-}
-
-function goToStep6() {
-  numMonths = document.getElementById('numMonths').value;
-
-  if (!validateInput(numMonths)) {
-    alert("Please enter the number of months to achieve your goal.");
-    return;
-  }
-
-  document.getElementById('step5').style.display = 'none';
-  document.getElementById('step6').style.display = 'block';
-}
-
 function showMealPlan() {
+  // Capture all inputs at once
+  age = document.getElementById('age').value;
+  exercisePerWeek = document.getElementById('exercisePerWeek').value;
+  currentWeight = document.getElementById('current-weight').value;
+  currentWeightUnit = document.getElementById('current-weight-unit').value;
+  targetWeight = document.getElementById('target-weight').value;
+  targetWeightUnit = document.getElementById('target-weight-unit').value;
+  numMonths = document.getElementById('numMonths').value;
   dietPreference = document.getElementById('diet').value;
 
-  if (!validateInput(dietPreference)) {
-    alert("Please choose a diet plan.");
+  // Validate all inputs
+  if (!validateInput(age) || !validateInput(exercisePerWeek) || !validateInput(currentWeight) || !validateInput(targetWeight) || !validateInput(numMonths) || !validateInput(dietPreference)) {
+    alert("Please fill out all fields.");
     return;
   }
 
@@ -84,6 +29,7 @@ function showMealPlan() {
     - Dinner: Steak and potatoes
     - Snack: Apple slices`;
 
+  // Display meal plan
   document.getElementById('meal-plan').innerHTML = mockMealPlan;
   document.getElementById('meal-plan-container').style.display = 'block';
 }
