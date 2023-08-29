@@ -19,9 +19,10 @@
   <h1>Personalized Meal Plans</h1>
 
   <div class="container">
-    <form id="meal-plan-form">
-      <label for="age">Enter your age:</label>
-      <input type="number" id="age" min="0"><br>
+    <div class="form-container">
+      <form id="meal-plan-form">
+        <label for="age">Enter your age:</label>
+        <input type="number" id="age" min="1"><br>
 
       <label for="exercisePerWeek">Enter amount of exercise per week:</label>
       <select id="exercisePerWeek">
@@ -35,20 +36,22 @@
       </select><br>
 
       <label for="current-weight">Enter your current weight:</label>
-      <input type="number" id="current-weight" min="0">
       <select id="current-weight-unit">
         <option value="lbs">LBS</option>
         <option value="kg">KG</option>
      </select>
+      <input type="number" id="current-weight" min="0">
+
 
         <br>
 
       <label for="target-weight">Enter your target weight:</label>
-      <input type="number" id="target-weight" min="0">
       <select id="target-weight-unit">
         <option value="lbs">LBS</option>
         <option value="kg">KG</option>
      </select>
+      <input type="number" id="target-weight" min="0">
+
         
         <br>
 
@@ -68,7 +71,7 @@
       </select>
       
       <br>
-
+    </div>
       <button type="button" onclick="showMealPlan()">Generate</button>
     </form>
   </div>
