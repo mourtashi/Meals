@@ -6,8 +6,8 @@ body {
 }
 
 header {
-  background-color: #4CAF50;
-  color: white;
+  background-color: white;
+  color: black;
 }
 
 nav ul {
@@ -41,7 +41,6 @@ nav ul li a:hover {
 h1 {
   text-align: center;
   margin-bottom: 20px;
-  background-color: palevioletred;
   color: white;
 }
 
