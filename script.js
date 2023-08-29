@@ -28,7 +28,6 @@ function goToStep3() {
   document.getElementById('step2').style.display = 'none';
   document.getElementById('step3').style.display = 'block';
 
-  createExercisePieChart();  // Call this function here
 }
 
 function goToStep4() {
