@@ -26,7 +26,7 @@
       </div>
 
       <div class="form-row">
-        <label for="exercisePerWeek" class="labes">Enter amount of exercise per week:</label>
+        <label for="exercisePerWeek">Enter amount of exercise per week:</label>
         <select id="exercisePerWeek">
           <option value="1 day a week">1 day a week</option>
           <option value="2 days a week">2 days a week</option>
@@ -39,7 +39,7 @@
       </div>
 
       <div class="form-row">
-        <label for="current-weight" class="labes">Enter your current weight:</label>
+        <label for="current-weight">Enter your current weight:</label>
         <div>
           <select id="current-weight-unit" class="unit-selector">
             <option value="lbs">LBS</option>
@@ -50,7 +50,7 @@
       </div>
 
       <div class="form-row">
-        <label for="target-weight" class="labes">Enter your target weight:</label>
+        <label for="target-weight">Enter your target weight:</label>
         <div>
           <select id="target-weight-unit" class="unit-selector">
             <option value="lbs">LBS</option>
@@ -60,13 +60,13 @@
         </div>
       </div>
 
-      <div class="form-row" >
-        <label for="numMonths" class="labes">Enter the number of months to achieve your goal:</label>
+      <div class="form-row">
+        <label for="numMonths">Enter the number of months to achieve your goal:</label>
         <input type="number" id="numMonths" min="0">
       </div>
 
       <div class="form-row">
-        <label for="diet" class="labes">Choose your diet plan:</label>
+        <label for="diet">Choose your diet plan:</label>
         <select id="diet">
           <option value="highProtein">High Protein</option>
           <option value="keto">Keto</option>
@@ -82,8 +82,9 @@
       <button type="button" onclick="showMealPlan()">Generate</button>
     </form>
   </div>
+  </div>
 
-  <div id="meal-plan-container" style="display: none;">
+  <div id="meal-plan-container">
     <div id="meal-plan"></div>
   </div>
 

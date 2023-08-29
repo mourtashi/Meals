@@ -100,6 +100,38 @@ button:hover {
   background-color: #45a049;
 }
 
-.labels{
-  text-align: right;
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.form-row label {
+  width: 40%;
+  text-align: left;
+}
+
+.form-row input[type="number"],
+.form-row select {
+  width: 60%;
+}
+
+#meal-plan-container {
+  display: none; /* You can remove this line if you're toggling visibility with JavaScript */
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  text-align: center;
 }
