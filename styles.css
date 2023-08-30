@@ -164,8 +164,8 @@ button:hover {
   vertical-align: top;
 }
 
-input[type="number"],
-select {
-  width: calc(40% - 10px); /* The 10px accounts for the padding */
+#current-weight,
+#target-weight {
+  width: calc(40% - 40px);  /* 40px accounts for the select box and some padding */
 }
 
