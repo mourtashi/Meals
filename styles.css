@@ -135,3 +135,24 @@ button:hover {
   border-radius: 8px;
   text-align: center;
 }
+
+.form-container label,
+.form-container .unit-selector {
+  display: inline-block;
+  width: 30%;
+  text-align: left;
+  vertical-align: top;
+}
+
+.form-container input[type="number"],
+.form-container select:not(.unit-selector) {
+  display: inline-block;
+  width: 60%;
+  vertical-align: top;
+}
+
+.unit-selector {
+  display: inline-block;
+  width: 10%;
+  vertical-align: top;
+}
