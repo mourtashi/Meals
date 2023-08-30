@@ -96,10 +96,9 @@ button {
   transition: background-color 0.3s ease;
 }
 
-.button-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.button-wrapper {
+  text-align: center;
+  margin-top: 20px;
 }
 
 button:hover {
