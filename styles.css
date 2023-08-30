@@ -163,9 +163,3 @@ button:hover {
   width: 10%;
   vertical-align: top;
 }
-
-#current-weight,
-#target-weight {
-  width: calc(90% - 40px);  /* 40px accounts for the select box and some padding */
-}
-
