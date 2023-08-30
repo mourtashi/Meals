@@ -164,3 +164,8 @@ button:hover {
   vertical-align: top;
 }
 
+input[type="number"],
+select {
+  width: calc(40% - 10px); /* The 10px accounts for the padding */
+}
+
