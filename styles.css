@@ -166,6 +166,6 @@ button:hover {
 
 #current-weight,
 #target-weight {
-  width: calc(40% - 40px);  /* 40px accounts for the select box and some padding */
+  width: calc(90% - 40px);  /* 40px accounts for the select box and some padding */
 }
 
