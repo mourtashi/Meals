@@ -1,3 +1,10 @@
+// Variables to hold user data
+let age, exercisePerWeek, currentWeight, targetWeight, currentWeightUnit, targetWeightUnit, numMonths, dietPreference;
+
+function validateInput(input) {
+  return input !== null && input !== undefined && input !== "";
+}
+
 function showMealPlan() {
   // Capture all inputs at once
   age = document.getElementById('age').value;
@@ -15,37 +22,14 @@ function showMealPlan() {
     return;
   }
 
-  // Prepare the payload for the API call
-  const payload = {
-    age: age,
-    currentWeight: currentWeight,
-    targetWeight: targetWeight,
-    exercisePerWeek: exercisePerWeek,
-    numMonths: numMonths,
-    dietPreference: dietPreference
-  };
+  // Simulating the API call with a mock meal plan for now
+  const mockMealPlan = `
+    - Breakfast: Toast and eggs
+    - Lunch: Grilled chicken and rice
+    - Dinner: Steak and potatoes
+    - Snack: Apple slices`;
 
-  // Define the API endpoint
-  const apiEndpoint = "https://s8hirlccnh.execute-api.us-east-2.amazonaws.com/Test2/mealplan";
-
-  // Make the API call
-  fetch(apiEndpoint, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      // Uncomment this line if you have an API key: 'x-api-key': 'YOUR_AWS_API_KEY'
-    },
-    body: JSON.stringify(payload)
-  })
-  .then(response => response.json())
-  .then(data => {
-    // Handle successful response. Display the meal plan here.
-    document.getElementById('meal-plan').innerHTML = data.mealPlan; // Assuming 'mealPlan' is a field in the API response
-    document.getElementById('meal-plan-container').style.display = 'block';
-  })
-  .catch((error) => {
-    // Handle errors
-    console.error('Error:', error);
-    alert("There was an error generating your meal plan. Please try again.");
-  });
+  // Display meal plan
+  document.getElementById('meal-plan').innerHTML = mockMealPlan;
+  document.getElementById('meal-plan-container').style.display = 'block';
 }
