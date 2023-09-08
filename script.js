@@ -46,6 +46,7 @@ async function showMealPlan() {
     // Process the response
     if (response.ok) {
       const jsonResponse = await response.json();
+      console.log("API response received:", jsonResponse);
       document.getElementById('meal-plan').innerHTML = jsonResponse.meal_plan;
       document.getElementById('meal-plan-container').style.display = 'block';
     } else {
