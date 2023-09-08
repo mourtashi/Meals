@@ -37,7 +37,7 @@ async function showMealPlan() {
     const response = await fetch('https://27fpsmseak.execute-api.us-east-2.amazonaws.com/testing1/myre', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',  // Added missing comma here
+        'Content-Type': 'application/json',
         'x-api-key': 'VhFimigloJ2SEO2jv0EB03DW2sxkBakq7NM0CaeM'
       },
       body: JSON.stringify(payload)
@@ -47,7 +47,9 @@ async function showMealPlan() {
     if (response.ok) {
       const jsonResponse = await response.json();
       console.log("API response received:", jsonResponse);
-      document.getElementById('meal-plan').innerHTML = jsonResponse.meal_plan;
+
+      const parsedMealPlan = JSON.parse(jsonResponse.body);  // Parsing the body to get the meal plan
+      document.getElementById('meal-plan').innerHTML = parsedMealPlan.meal_plan;
       document.getElementById('meal-plan-container').style.display = 'block';
     } else {
       alert('Something went wrong!');
