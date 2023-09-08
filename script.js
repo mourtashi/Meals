@@ -70,4 +70,3 @@ if (response.ok) {
 } else {
   alert('Something went wrong!');
 }
-
