@@ -205,3 +205,9 @@ body.blur-overlay {
   z-index: 9998; /* High z-index */
 }
 
+.blur-content {
+  filter: blur(5px);
+  transition: filter 0.3s ease;
+}
+
+

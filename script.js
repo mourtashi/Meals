@@ -6,15 +6,20 @@ function validateInput(input) {
   return input !== null && input !== undefined && input !== "";
 }
 
-// Function to toggle blur overlay
+// Function to toggle blur overlay and blur content
 function toggleBlurOverlay(show) {
   const overlay = document.getElementById('overlay');
+  const content = document.getElementById('content-to-blur');
+  
   if (show) {
     overlay.classList.add('blur-overlay');
+    content.classList.add('blur-content');
   } else {
     overlay.classList.remove('blur-overlay');
+    content.classList.remove('blur-content');
   }
 }
+
 
 // Async function to show meal plan
 async function showMealPlan() {
