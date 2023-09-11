@@ -8,11 +8,11 @@ function validateInput(input) {
 
 // Function to toggle blur overlay
 function toggleBlurOverlay(show) {
-  const mainContent = document.body;
+  const overlay = document.getElementById('overlay');
   if (show) {
-    mainContent.classList.add('blur-overlay');
+    overlay.classList.add('blur-overlay');
   } else {
-    mainContent.classList.remove('blur-overlay');
+    overlay.classList.remove('blur-overlay');
   }
 }
 
