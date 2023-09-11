@@ -133,14 +133,14 @@ button:hover {
 }
 
 #meal-plan-container {
-  display: none; /* You can remove this line if you're toggling visibility with JavaScript */
+  display: none;
   max-width: 800px;
   margin: 20px auto;
   padding: 20px;
   background-color: #fff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-  text-align: center;
+  text-align: left;
 }
 
 .form-container label,
