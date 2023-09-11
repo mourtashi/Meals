@@ -181,6 +181,7 @@ button:hover {
   top: 50%; /* Center vertically */
   transform: translate(-50%, -50%); /* Adjust for accurate centering */
   z-index: 9999; /* Make it appear on top */
+  filter: none;
 }
 
 
@@ -189,3 +190,13 @@ button:hover {
   100% { transform: rotate(360deg); }
 }
 
+.blur-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  z-index: 9998;
+}

@@ -6,11 +6,22 @@ function validateInput(input) {
   return input !== null && input !== undefined && input !== "";
 }
 
+// Function to toggle blur overlay
+function toggleBlurOverlay(show) {
+  const mainContent = document.body;
+  if (show) {
+    mainContent.classList.add('blur-overlay');
+  } else {
+    mainContent.classList.remove('blur-overlay');
+  }
+}
+
 // Async function to show meal plan
 async function showMealPlan() {
   try {
-    // Show the loading spinner
+    // Show the loading spinner and blur overlay
     document.getElementById('loading-spinner').style.display = 'block';
+    toggleBlurOverlay(true);
 
     // Capture all inputs at once
     age = document.getElementById('age').value;
@@ -25,6 +36,7 @@ async function showMealPlan() {
     // Validate all inputs
     if (!validateInput(age) || !validateInput(exercisePerWeek) || !validateInput(currentWeight) || !validateInput(targetWeight) || !validateInput(numMonths) || !validateInput(dietPreference)) {
       alert("Please fill out all fields.");
+      toggleBlurOverlay(false);
       return;
     }
 
@@ -48,8 +60,9 @@ async function showMealPlan() {
       body: JSON.stringify(payload)
     });
 
-    // Hide the loading spinner
+    // Hide the loading spinner and blur overlay
     document.getElementById('loading-spinner').style.display = 'none';
+    toggleBlurOverlay(false);
 
     // Process the response
     if (response.ok) {
@@ -76,8 +89,9 @@ async function showMealPlan() {
       alert('Something went wrong!');
     }
   } catch (error) {
-    // Hide the loading spinner
+    // Hide the loading spinner and blur overlay
     document.getElementById('loading-spinner').style.display = 'none';
+    toggleBlurOverlay(false);
     console.error('There was a problem with the fetch operation:', error);
   }
 }
