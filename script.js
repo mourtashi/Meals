@@ -88,8 +88,16 @@ async function showMealPlan() {
       // Close the last unordered list
       formattedMealPlan += "</ul>";
 
-      document.getElementById('meal-plan').innerHTML = formattedMealPlan;
       document.getElementById('meal-plan-container').style.display = 'block';
+      let index = 0;
+      function typeText() {
+        if (index < formattedMealPlan.length) {
+          document.getElementById('meal-plan').innerHTML += formattedMealPlan[index];
+          index++;
+          setTimeout(typeText, 50); // Speed of typing
+        }
+      }
+      typeText();
     } else {
       alert('Something went wrong!');
     }
