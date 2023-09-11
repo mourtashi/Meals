@@ -10,19 +10,15 @@ function validateInput(input) {
 function toggleBlurOverlay(show) {
   const overlay = document.getElementById('overlay');
   const content = document.getElementById('content-to-blur');
-  const overlayText = document.getElementById('overlay-text'); // Get Text Element
-
+  
   if (show) {
     overlay.classList.add('blur-overlay');
     content.classList.add('blur-content');
-    overlayText.style.display = 'block'; // Show Text Element
   } else {
     overlay.classList.remove('blur-overlay');
     content.classList.remove('blur-content');
-    overlayText.style.display = 'none'; // Hide Text Element
   }
 }
-
 
 
 // Async function to show meal plan
