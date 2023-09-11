@@ -190,6 +190,10 @@ button:hover {
   100% { transform: rotate(360deg); }
 }
 
+body.blur-overlay {
+  filter: blur(5px);
+}
+
 .blur-overlay {
   display: none;
   position: fixed;
@@ -200,3 +204,4 @@ button:hover {
   background: rgba(255, 255, 255, 0.8);
   z-index: 9998;
 }
+
