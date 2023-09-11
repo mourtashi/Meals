@@ -1,12 +1,17 @@
 // Variables to hold user data
 let age, exercisePerWeek, currentWeight, targetWeight, currentWeightUnit, targetWeightUnit, numMonths, dietPreference;
 
+// Validate function
 function validateInput(input) {
   return input !== null && input !== undefined && input !== "";
 }
 
+// Async function to show meal plan
 async function showMealPlan() {
   try {
+    // Show the loading spinner
+    document.getElementById('loading-spinner').style.display = 'block';
+
     // Capture all inputs at once
     age = document.getElementById('age').value;
     exercisePerWeek = document.getElementById('exercisePerWeek').value;
@@ -49,7 +54,7 @@ async function showMealPlan() {
     // Process the response
     if (response.ok) {
       const jsonResponse = await response.json();
-      const parsedMealPlan = JSON.parse(jsonResponse.body); // Parsing the body to get the meal plan
+      const parsedMealPlan = JSON.parse(jsonResponse.body);
       const rawMealPlan = parsedMealPlan.meal_plan;
 
       // Formatting the meal plan
