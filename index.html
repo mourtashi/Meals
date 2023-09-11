@@ -26,12 +26,64 @@
 
   <div class="container">
     <form id="meal-plan-form" class="form-container">
-      <!-- ... (Your existing form fields here) ... -->
-      <div class="button-wrapper">
-        <button type="button" onclick="showMealPlan()">Generate</button>
+      <div class="form-row">
+        <label for="age">Enter your age:</label>
+        <input type="number" id="age" min="1">
       </div>
-    </form>
-  </div>
+
+      <div class="form-row">
+        <label for="exercisePerWeek">Enter amount of exercise per week:</label>
+        <select id="exercisePerWeek">
+          <option value="1 day a week">1 day a week</option>
+          <option value="2 days a week">2 days a week</option>
+          <option value="3 days a week">3 days a week</option>
+          <option value="4 days a week">4 days a week</option>
+          <option value="5 days a week">5 days a week</option>
+          <option value="6 days a week">6 days a week</option>
+          <option value="7 days a week">7 days a week</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label for="current-weight">Enter your current weight:</label>
+        <div>
+          <select id="current-weight-unit" class="unit-selector">
+            <option value="lbs">LBS</option>
+            <option value="kg">KG</option>
+          </select>
+          <input type="number" id="current-weight" min="0">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label for="target-weight">Enter your target weight:</label>
+        <div>
+          <select id="target-weight-unit" class="unit-selector">
+            <option value="lbs">LBS</option>
+            <option value="kg">KG</option>
+          </select>
+          <input type="number" id="target-weight" min="0">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label for="numMonths">Enter the number of months to achieve your goal:</label>
+        <input type="number" id="numMonths" min="0">
+      </div>
+
+      <div class="form-row">
+        <label for="diet">Choose your diet plan:</label>
+        <select id="diet">
+          <option value="highProtein">High Protein</option>
+          <option value="keto">Keto</option>
+          <option value="lowCalorie">Low Calorie</option>
+          <option value="vegetarian">Vegetarian</option>
+          <option value="vegan">Vegan</option>
+          <option value="glutenFree">Gluten-Free</option>
+          <option value="paleo">Paleo</option>
+          <option value="mediterranean">Mediterranean</option>
+        </select>
+      </div>
 
   <div id="loading-spinner" class="loading-spinner"></div>
 
