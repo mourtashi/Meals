@@ -43,6 +43,9 @@ async function showMealPlan() {
       body: JSON.stringify(payload)
     });
 
+      // Hide the loading spinner
+      document.getElementById('loading-spinner').style.display = 'none';
+
     // Process the response
     if (response.ok) {
       const jsonResponse = await response.json();
@@ -50,6 +53,13 @@ async function showMealPlan() {
 
       const parsedMealPlan = JSON.parse(jsonResponse.body);  // Parsing the body to get the meal plan
       const rawMealPlan = parsedMealPlan.meal_plan;
+
+  } catch (error) {
+      // Hide the loading spinner
+      document.getElementById('loading-spinner').style.display = 'none';
+      console.error('There was a problem with the fetch operation:', error);
+    }
+  }
   
       // Formatting the meal plan
       let formattedMealPlan = rawMealPlan
