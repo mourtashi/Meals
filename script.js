@@ -74,25 +74,7 @@ async function showMealPlan() {
       const jsonResponse = await response.json();
       const parsedMealPlan = JSON.parse(jsonResponse.body);
       const rawMealPlan = parsedMealPlan.meal_plan;
-
-      // Formatting the meal plan
-      let formattedMealPlan = rawMealPlan
-        .replace("Breakfast:", "<strong>Breakfast:</strong><ul><li>")
-        .replace("Lunch:", "</li></ul><strong>Lunch:</strong><ul><li>")
-        .replace("Dinner:", "</li></ul><strong>Dinner:</strong><ul><li>")
-        .replace("Snack:", "</li></ul><strong>Snack:</strong><ul><li>");
-
-      // Replace each food separator '-' with a new list item
-      formattedMealPlan = formattedMealPlan.replace(/-\s*(.+?)(?=-|$)/g, (_, item) => `<li>${item}</li>`);
-
-      // Close the last unordered list
-      formattedMealPlan += "</ul>";
-
-      document.getElementById('meal-plan').innerHTML = formattedMealPlan;
-      document.getElementById('meal-plan-container').style.display = 'block';
-    } else {
-      alert('Something went wrong!');
-    }
+      
   } catch (error) {
     // Hide the loading spinner and blur overlay
     document.getElementById('loading-spinner').style.display = 'none';
