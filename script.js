@@ -34,13 +34,17 @@ async function showMealPlan() {
 
   try {
     // Make the API call
-    const response = await fetch('https://27fpsmseak.execute-api.us-east-2.amazonaws.com/testing1/myre', {
+    const response = await fetch('https://api.openai.com/v1/engines/davinci/completions', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'x-api-key': 'VhFimigloJ2SEO2jv0EB03DW2sxkBakq7NM0CaeM'
+        'Authorization': 'Bearer YOUR_OPENAI_API_KEY' // Replace with your actual OpenAI API key
       },
-      body: JSON.stringify(payload)
+      body: JSON.stringify({
+        prompt: JSON.stringify(payload), // Use the user inputs as a prompt
+        max_tokens: 150
+        // Additional parameters based on the chosen model
+      })
     });
 
     // Process the response
@@ -49,29 +53,10 @@ async function showMealPlan() {
         const jsonResponse = await response.json();
         console.log("API response received:", jsonResponse);
 
-        if (jsonResponse.body) {
-          const parsedMealPlan = JSON.parse(jsonResponse.body); // Parsing the body to get the meal plan
-          const rawMealPlan = parsedMealPlan.meal_plan;
+        // Process the response based on the structure of GPT-3 responses
+        const generatedText = jsonResponse.choices[0].text;
 
-          // Formatting the meal plan
-          let formattedMealPlan = rawMealPlan
-            .replace("Breakfast:", "<strong>Breakfast:</strong><ul><li>")
-            .replace("Lunch:", "</li></ul><strong>Lunch:</strong><ul><li>")
-            .replace("Dinner:", "</li></ul><strong>Dinner:</strong><ul><li>")
-            .replace("Snack:", "</li></ul><strong>Snack:</strong><ul><li>");
-
-          // Replace each food separator '-' with a new list item
-          formattedMealPlan = formattedMealPlan.replace(/-\s*(.+?)(?=-|$)/g, (_, item) => `<li>${item}</li>`);
-
-          // Close the last unordered list
-          formattedMealPlan += "</ul>";
-
-          document.getElementById('meal-plan').innerHTML = formattedMealPlan;
-          document.getElementById('meal-plan-container').style.display = 'block';
-        } else {
-          console.error('Invalid or missing response body');
-          alert('Something went wrong!');
-        }
+        // ... (rest of the code for handling the generated text)
       } catch (error) {
         console.error('Error parsing JSON from response body:', error);
         alert('Something went wrong!');
