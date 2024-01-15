@@ -5,7 +5,7 @@ function validateInput(input) {
   return input !== null && input !== undefined && input !== "";
 }
 
-function showMealPlan() {
+async function showMealPlan() {
   // Capture all inputs at once
   age = document.getElementById('age').value;
   exercisePerWeek = document.getElementById('exercisePerWeek').value;
@@ -43,30 +43,40 @@ function showMealPlan() {
       body: JSON.stringify(payload)
     });
 
-// Process the response
-if (response.ok) {
-  const jsonResponse = await response.json();
-  console.log("API response received:", jsonResponse);
+    // Process the response
+    if (response.ok) {
+      const jsonResponse = await response.json();
+      console.log("API response received:", jsonResponse);
 
-  const parsedMealPlan = JSON.parse(jsonResponse.body);  // Parsing the body to get the meal plan
-  const rawMealPlan = parsedMealPlan.meal_plan;
-  
-  // Formatting the meal plan
-  let formattedMealPlan = rawMealPlan
-    .replace("Breakfast:", "<strong>Breakfast:</strong><ul><li>")
-    .replace("Lunch:", "</li></ul><strong>Lunch:</strong><ul><li>")
-    .replace("Dinner:", "</li></ul><strong>Dinner:</strong><ul><li>")
-    .replace("Snack:", "</li></ul><strong>Snack:</strong><ul><li>");
-  
-  // Replace each food separator '-' with a new list item
-  formattedMealPlan = formattedMealPlan.replace(/-\s*(.+?)(?=-|$)/g, (_, item) => `<li>${item}</li>`);
-  
-  // Close the last unordered list
-  formattedMealPlan += "</ul>";
+      if (jsonResponse.body) {
+        const parsedMealPlan = JSON.parse(jsonResponse.body); // Parsing the body to get the meal plan
+        const rawMealPlan = parsedMealPlan.meal_plan;
 
-  document.getElementById('meal-plan').innerHTML = formattedMealPlan;
-  document.getElementById('meal-plan-container').style.display = 'block';
-  
-} else {
-  alert('Something went wrong!');
+        // Formatting the meal plan
+        let formattedMealPlan = rawMealPlan
+          .replace("Breakfast:", "<strong>Breakfast:</strong><ul><li>")
+          .replace("Lunch:", "</li></ul><strong>Lunch:</strong><ul><li>")
+          .replace("Dinner:", "</li></ul><strong>Dinner:</strong><ul><li>")
+          .replace("Snack:", "</li></ul><strong>Snack:</strong><ul><li>");
+
+        // Replace each food separator '-' with a new list item
+        formattedMealPlan = formattedMealPlan.replace(/-\s*(.+?)(?=-|$)/g, (_, item) => `<li>${item}</li>`);
+
+        // Close the last unordered list
+        formattedMealPlan += "</ul>";
+
+        document.getElementById('meal-plan').innerHTML = formattedMealPlan;
+        document.getElementById('meal-plan-container').style.display = 'block';
+      } else {
+        console.error('Invalid or missing response body');
+        alert('Something went wrong!');
+      }
+    } else {
+      console.error('HTTP error:', response.status);
+      alert('Something went wrong!');
+    }
+  } catch (error) {
+    console.error('There was a problem with the fetch operation:', error);
+    alert('Something went wrong!');
+  }
 }
