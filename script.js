@@ -38,7 +38,7 @@ async function showMealPlan() {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'VhFimigloJ2SEO2jv0EB03DW2sxkBakq7NM0CaeM' // Replace with your actual OpenAI API key
+        'Authorization': 'Bearer VhFimigloJ2SEO2jv0EB03DW2sxkBakq7NM0CaeM' // Replace with your actual OpenAI API key
       },
       body: JSON.stringify({
         prompt: JSON.stringify(payload), // Use the user inputs as a prompt
