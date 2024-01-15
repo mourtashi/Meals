@@ -5,7 +5,7 @@ function validateInput(input) {
   return input !== null && input !== undefined && input !== "";
 }
 
-async function showMealPlan() {
+function showMealPlan() {
   // Capture all inputs at once
   age = document.getElementById('age').value;
   exercisePerWeek = document.getElementById('exercisePerWeek').value;
@@ -34,39 +34,44 @@ async function showMealPlan() {
 
   try {
     // Make the API call
-    const response = await fetch('https://api.openai.com/v1/engines/davinci/completions', {
+    const response = await fetch('https://27fpsmseak.execute-api.us-east-2.amazonaws.com/testing1/myre', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer VhFimigloJ2SEO2jv0EB03DW2sxkBakq7NM0CaeM' // Replace with your actual OpenAI API key
+        'x-api-key': 'VhFimigloJ2SEO2jv0EB03DW2sxkBakq7NM0CaeM'
       },
-      body: JSON.stringify({
-        prompt: JSON.stringify(payload), // Use the user inputs as a prompt
-        max_tokens: 150
-        // Additional parameters based on the chosen model
-      })
+      body: JSON.stringify(payload)
     });
 
     // Process the response
     if (response.ok) {
-      try {
-        const jsonResponse = await response.json();
-        console.log("API response received:", jsonResponse);
+      const jsonResponse = await response.json();
+      console.log("API response received:", jsonResponse);
 
-        // Process the response based on the structure of GPT-3 responses
-        const generatedText = jsonResponse.choices[0].text;
+      const parsedMealPlan = JSON.parse(jsonResponse.body);  // Parsing the body to get the meal plan
+      const rawMealPlan = parsedMealPlan.meal_plan;
+  
+      // Formatting the meal plan
+      let formattedMealPlan = rawMealPlan
+        .replace("Breakfast:", "<strong>Breakfast:</strong><ul><li>")
+        .replace("Lunch:", "</li></ul><strong>Lunch:</strong><ul><li>")
+        .replace("Dinner:", "</li></ul><strong>Dinner:</strong><ul><li>")
+        .replace("Snack:", "</li></ul><strong>Snack:</strong><ul><li>");
+  
+      // Replace each food separator '-' with a new list item
+      formattedMealPlan = formattedMealPlan.replace(/-\s*(.+?)(?=-|$)/g, (_, item) => `<li>${item}</li>`);
+  
+      // Close the last unordered list
+      formattedMealPlan += "</ul>";
 
-        // ... (rest of the code for handling the generated text)
-      } catch (error) {
-        console.error('Error parsing JSON from response body:', error);
-        alert('Something went wrong!');
-      }
+      document.getElementById('meal-plan').innerHTML = formattedMealPlan;
+      document.getElementById('meal-plan-container').style.display = 'block';
+  
     } else {
-      console.error('HTTP error:', response.status);
       alert('Something went wrong!');
     }
+
   } catch (error) {
     console.error('There was a problem with the fetch operation:', error);
-    alert('Something went wrong!');
   }
 }
