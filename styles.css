@@ -1,24 +1,24 @@
 body {
-  font-family: Arial, sans-serif;
-  background-color: gray;
+  font-family: 'Arial', sans-serif;
+  background-color: #f8f8f8;
   margin: 0;
   padding: 0;
 }
 
 header {
-  background-color: white;
-  color: black;
+  background-color: #fff;
+  color: #333;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 nav ul {
-  padding: 0;
-  margin: 0;
   list-style: none;
   display: flex;
-  justify-content: start;
+  justify-content: space-between;
   align-items: center;
-  background-color: black;
-  padding: 10px;
+  padding: 0;
+  margin: 0;
 }
 
 nav ul li {
@@ -30,8 +30,9 @@ nav ul li.right {
 }
 
 nav ul li a {
-  color: white;
   text-decoration: none;
+  color: #333;
+  font-weight: bold;
 }
 
 nav ul li a:hover {
@@ -41,7 +42,7 @@ nav ul li a:hover {
 h1 {
   text-align: center;
   margin-bottom: 20px;
-  color: white;
+  color: #333;
 }
 
 .container {
@@ -51,7 +52,7 @@ h1 {
   background-color: #fff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-  max-height: fit-content;
+  margin-top: 20px;
 }
 
 .form-container {
@@ -71,8 +72,9 @@ h1 {
 
 .form-row label {
   flex: 1;
-  text-align: right;
+  text-align: left;
   margin-right: 10px;
+  color: #333;
 }
 
 .form-row input[type="number"],
@@ -85,17 +87,6 @@ h1 {
   margin-left: 5px;
 }
 
-button {
-  margin: 5px;
-  padding: 10px 20px;
-  border: none;
-  background-color: black;
-  color: white;
-  font-size: 1em;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
 .button-wrapper {
   display: flex;
   justify-content: center;
@@ -103,63 +94,48 @@ button {
   margin-top: 20px;
 }
 
+button {
+  margin: 5px;
+  padding: 10px 20px;
+  border: none;
+  background-color: #333;
+  color: #fff;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
 button:hover {
-  background-color: #45a049;
-}
-
-.form-container {
-  display: block;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 100%;
-}
-
-.form-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  margin-bottom: 10px;
-}
-
-.form-row label {
-  width: 40%;
-  text-align: left;
-}
-
-.form-row input[type="number"],
-.form-row select {
-  width: 60%;
+  background-color: #555;
 }
 
 #meal-plan-container {
-  display: none; /* You can remove this line if you're toggling visibility with JavaScript */
+  display: none;
   max-width: 800px;
   margin: 20px auto;
   padding: 20px;
   background-color: #fff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-  text-align: center;
-}
-
-.form-container label,
-.form-container .unit-selector {
-  display: inline-block;
-  width: 30%;
   text-align: left;
-  vertical-align: top;
 }
 
-.form-container input[type="number"],
-.form-container select:not(.unit-selector) {
-  display: inline-block;
-  width: 60%;
-  vertical-align: top;
+#meal-plan-container ul {
+  list-style: none;
+  padding: 0;
 }
 
-.unit-selector {
-  display: inline-block;
-  width: 10%;
-  vertical-align: top;
+#meal-plan-container li {
+  margin-bottom: 5px;
+  color: #333;
+}
+
+#meal-plan-container strong {
+  color: #555;
+}
+
+#meal-plan-container li::before {
+  content: '•';
+  margin-right: 5px;
+  color: #555;
 }
