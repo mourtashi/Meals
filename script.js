@@ -25,10 +25,15 @@ async function showMealPlan() {
   // Add loading message with repeating dots
   const loadingMessageElement = document.getElementById('meal-plan');
   loadingMessageElement.textContent = 'Generating meal plan';
+
+  // Create a separate span element for dots
+  const dotsSpan = document.createElement('span');
+  loadingMessageElement.appendChild(dotsSpan);
+
   const dotsInterval = setInterval(() => {
-    loadingMessageElement.textContent += '.';
-    if (loadingMessageElement.textContent.length > 24) {
-      loadingMessageElement.textContent = 'Generating meal plan';
+    dotsSpan.textContent += '.';
+    if (dotsSpan.textContent.length > 3) {
+      dotsSpan.textContent = '.';
     }
   }, 500);
 
@@ -81,7 +86,7 @@ async function showMealPlan() {
         formattedMealPlan += "</ul>";
 
         // Display the formatted meal plan
-        loadingMessageElement.textContent = formattedMealPlan;
+        loadingMessageElement.innerHTML = formattedMealPlan;
         document.getElementById('meal-plan-container').style.display = 'block';
       } else {
         console.error('Invalid or missing response body');
