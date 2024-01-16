@@ -27,7 +27,7 @@ async function showMealPlan() {
   loadingMessageElement.innerHTML = 'Generating meal plan';
   const dotsInterval = setInterval(() => {
     loadingMessageElement.innerHTML += '.';
-    if (loadingMessageElement.innerHTML.length > 21) {
+    if (loadingMessageElement.innerHTML.length > 24) {
       loadingMessageElement.innerHTML = 'Generating meal plan';
     }
   }, 500);
