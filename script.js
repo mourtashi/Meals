@@ -22,8 +22,17 @@ async function showMealPlan() {
     return;
   }
 
-  // Add loading message
-  document.getElementById('meal-plan').innerHTML = 'Generating meal plan...';
+  // Add loading message with repeating dots
+  const loadingMessageElement = document.getElementById('meal-plan');
+  loadingMessageElement.innerHTML = 'Generating meal plan';
+  const dotsInterval = setInterval(() => {
+    loadingMessageElement.innerHTML += '.';
+    if (loadingMessageElement.innerHTML.length > 21) {
+      loadingMessageElement.innerHTML = 'Generating meal plan';
+    }
+  }, 500);
+
+  // Show the meal plan container
   document.getElementById('meal-plan-container').style.display = 'block';
 
   // Construct the payload
@@ -48,6 +57,8 @@ async function showMealPlan() {
     });
 
     // Process the response
+    clearInterval(dotsInterval); // Stop the repeating dots
+
     if (response.ok) {
       const jsonResponse = await response.json();
       console.log("API response received:", jsonResponse);
@@ -69,7 +80,8 @@ async function showMealPlan() {
         // Close the last unordered list
         formattedMealPlan += "</ul>";
 
-        document.getElementById('meal-plan').innerHTML = formattedMealPlan;
+        // Display the formatted meal plan
+        loadingMessageElement.innerHTML = formattedMealPlan;
         document.getElementById('meal-plan-container').style.display = 'block';
       } else {
         console.error('Invalid or missing response body');
