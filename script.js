@@ -22,6 +22,10 @@ async function showMealPlan() {
     return;
   }
 
+  // Add loading message
+  document.getElementById('meal-plan').innerHTML = 'Generating meal plan...';
+  document.getElementById('meal-plan-container').style.display = 'block';
+
   // Construct the payload
   const payload = {
     age: age,
